@@ -59,11 +59,11 @@ class DistrictSeeder extends Seeder
             ['name'=>'Dergaon PS','district_id'=>'14'],
             ['name'=>'Golaghat PS','district_id'=>'14'],
             ['name'=>'Khumtai PS','district_id'=>'14'],
-            ['name'=>'Numaligarh PS','district_id'=>'14'],
+            ['name'=>'Numaligarh OP','district_id'=>'14'],
             ['name'=>'Sarupathar PS','district_id'=>'14'],
             ['name'=>'Merapani PS','district_id'=>'14'],
-            ['name'=>'Sarupathar PS','district_id'=>'14'],
-            ['name'=>'Sarupathar PS','district_id'=>'14'],
+            ['name'=>'Borpathar PS','district_id'=>'14'],
+            ['name'=>'Furkating OP','district_id'=>'14'],
         ]);
     }
 }
