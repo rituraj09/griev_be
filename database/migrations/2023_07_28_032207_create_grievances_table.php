@@ -21,8 +21,7 @@ return new class extends Migration
             $table->integer('district_id'); 
             $table->integer('circle_id')->nullable();
             $table->integer('police_id')->nullable(); 
-            $table->string('address',400)->nullable();
-            $table->string('address',10)->nullable();
+            $table->string('address',400)->nullable(); 
             $table->integer('current_status')->default(1);  
             $table->boolean('status')->default(0);  
             $table->timestamp('created_at')->nullable();

@@ -20,7 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'phone',
+        'otp',
+        'otp_sent_at',
+        'status',
+        'created_at',
     ];
 
     /**
@@ -32,7 +36,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public static $rules 	= [
+    	'name' 	=> 'required|max:80',
+    	'email' 	=> 'bail|max:80',
+        'phone' => 'required|digits:10|regex:/^[6-9][0-9]{9}$/|unique:users,phone', 
+	];
+    public $timestamps      = false; 
     /**
      * The attributes that should be cast.
      *

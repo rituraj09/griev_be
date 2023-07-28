@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email',100)->nullable();
             $table->string('phone', 20); 
             $table->string('otp', 20); 
+            $table->timestamp('otp_sent_at')->nullable(); 
             $table->timestamp('otp_verified_at')->nullable(); 
             $table->boolean('status')->default(0); 
             $table->rememberToken();
