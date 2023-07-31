@@ -17,6 +17,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'file_storage_path' => env('FILE_STORAGE_PATH', 'public/files/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,8 +181,10 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+    'aliases' => Facade::defaultAliases()->merge([ 
+        'Crypt' => Illuminate\Support\Facades\Crypt::class,
+        'DB' => Illuminate\Support\Facades\DB::class,
+        'Helper'=>App\Helpers\Helper::class,
     ])->toArray(),
 
 ];

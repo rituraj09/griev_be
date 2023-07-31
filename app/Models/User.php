@@ -41,6 +41,9 @@ class User extends Authenticatable
     	'email' 	=> 'bail|max:80',
         'phone' => 'required|digits:10|regex:/^[6-9][0-9]{9}$/|unique:users,phone', 
 	];
+    public static $phonerules 	= [ 
+        'phone' => 'required|digits:10|regex:/^[6-9][0-9]{9}$/|unique:users,phone', 
+	];
     public $timestamps      = false; 
     /**
      * The attributes that should be cast.
