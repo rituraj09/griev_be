@@ -55,7 +55,12 @@ class PostGrievanceController extends Controller
     }
 
     public function getGrievance($id)
-    {
+    { 
+        // $decryptionKey = 'YourEncryptionKey'; 
+        // $decryptedParameter = Crypt::decrypt($id, $decryptionKey);
+        // return  Crypt::decrypt($decryptedParameter);
+        //$decryptedParameter = Crypt::decrypt($id, $decryptionKey);
+    
         $grievance = Grievance::join('matters', 'grievances.matter', '=', 'matters.id')
         ->join('districts', 'grievances.district_id', '=', 'districts.id')
         ->join('circle_offices', 'grievances.circle_id', '=', 'circle_offices.id')
@@ -65,6 +70,23 @@ class PostGrievanceController extends Controller
         DB::raw('CONCAT(DATE_FORMAT(grievances.created_at, "%Y"), LPAD(grievances.id, 5, "0")) AS gid'),
         DB::raw('DATE_FORMAT(grievances.created_at, "%d-%m-%Y %H:%i:%s") as created_on'))
         ->where(['user_id'=>$id, 'status'=>1])->orderBy('id','DESC')->get();
+        return response()->json([
+            'status' => 200,
+            'grievance' => $grievance, 
+        ]); 
+    }
+
+    public function getGrievanceView($id, $gid)
+    {   
+        $grievance = Grievance::join('matters', 'grievances.matter', '=', 'matters.id')
+        ->join('districts', 'grievances.district_id', '=', 'districts.id')
+        ->join('circle_offices', 'grievances.circle_id', '=', 'circle_offices.id')
+        ->join('police_stations', 'grievances.police_id', '=', 'police_stations.id')
+        ->select('grievances.*', 'matters.name as mattername', 'districts.name as districtname', 
+        'circle_offices.name as circlename',  'police_stations.name as policename', 
+        DB::raw('CONCAT(DATE_FORMAT(grievances.created_at, "%Y"), LPAD(grievances.id, 5, "0")) AS gid'),
+        DB::raw('DATE_FORMAT(grievances.created_at, "%d-%m-%Y %H:%i:%s") as created_on'))
+        ->where(['user_id'=>$id, 'status'=>1, 'grievances.id'=>$gid])->orderBy('id','DESC')->first();
         return response()->json([
             'status' => 200,
             'grievance' => $grievance, 

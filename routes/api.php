@@ -29,9 +29,8 @@ Route::group(['middleware'=>'api'],function(){
     Route::get('districtlist', [MasterController::class, 'getDistrict']);
     Route::get('policelist/{id}', [MasterController::class, 'getPolice']);
     Route::get('circlelist/{id}', [MasterController::class, 'getCircle']);
-    Route::post('saveGrievance', [PostGrievanceController::class, 'save']);
- 
-
-    Route::get('getGrievance/{id}', [PostGrievanceController::class, 'getGrievance']);
+    Route::post('saveGrievance', [PostGrievanceController::class, 'save']); 
+    Route::get('getGrievance/{id}', [PostGrievanceController::class, 'getGrievance']); 
+    Route::get('getGrievanceView/{id}/{gid}', [PostGrievanceController::class, 'getGrievanceView']); 
 });
 

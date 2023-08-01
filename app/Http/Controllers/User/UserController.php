@@ -24,7 +24,7 @@ class UserController extends Controller
             DB::commit();
             return response()->json([
                 'status' => 200,
-                'message'=> 'OTP Successfully sent to your mobile no.',
+                'message'=> 'OTP Successfully sent to your mobile no. '.$request->phone,
             ]);
         }
         else
