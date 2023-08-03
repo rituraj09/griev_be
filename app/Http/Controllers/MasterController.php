@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\District;
-use App\Models\Matter;
-use App\Models\PoliceStation;
-use App\Models\CircleOffice; 
+use App\Models\Matter; 
+use App\Models\Organisation; 
 use DB, Validator, Auth, Crypt, Hash;
 
 class MasterController extends Controller
@@ -28,7 +27,7 @@ class MasterController extends Controller
         );
     }
     public function getPolice($id){
-        $police = PoliceStation::where(['district_id'=>$id, 'is_delete'=>0])->get();
+        $police = Organisation::where(['district_id'=>$id, 'is_delete'=>0, 'office_type'=>3])->get();
         if($police)
         {
             return response()->json([
@@ -45,7 +44,7 @@ class MasterController extends Controller
         }
     }  
     public function getCircle($id){
-        $circleoffice = CircleOffice::where(['district_id'=>$id, 'is_delete'=>0])->get();
+        $circleoffice = Organisation::where(['district_id'=>$id, 'is_delete'=>0, 'office_type'=>2])->get();
         if($circleoffice)
         {
             return response()->json([

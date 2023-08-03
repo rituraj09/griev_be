@@ -47,23 +47,6 @@ class DistrictSeeder extends Seeder
             array('name'=>'Udalguri'),
             array('name'=>'West Karbi Anlong'),
         ));
-        DB::table('circle_offices')->insert([ ['name'=>'Bokakhat Revenue Circle','district_id'=>'14'],
-            ['name'=>'Dergaon Revenue Circle','district_id'=>'14'],
-            ['name'=>'Golaghat Revenue Circle','district_id'=>'14'],
-            ['name'=>'Khumtai Revenue Circle','district_id'=>'14'],
-            ['name'=>'Morangi Revenue Circle','district_id'=>'14'],
-            ['name'=>'Sarupathar Revenue Circle','district_id'=>'14'],
-        ]);
-
-        DB::table('police_stations')->insert([ ['name'=>'Bokakhat PS','district_id'=>'14'],
-            ['name'=>'Dergaon PS','district_id'=>'14'],
-            ['name'=>'Golaghat PS','district_id'=>'14'],
-            ['name'=>'Khumtai PS','district_id'=>'14'],
-            ['name'=>'Numaligarh OP','district_id'=>'14'],
-            ['name'=>'Sarupathar PS','district_id'=>'14'],
-            ['name'=>'Merapani PS','district_id'=>'14'],
-            ['name'=>'Borpathar PS','district_id'=>'14'],
-            ['name'=>'Furkating OP','district_id'=>'14'],
-        ]);
+        
     }
 }

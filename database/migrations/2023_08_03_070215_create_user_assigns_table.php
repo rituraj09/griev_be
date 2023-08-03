@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('circle_offices', function (Blueprint $table) {
+        Schema::create('official_assigns', function (Blueprint $table) {
             $table->increments('id'); 
-            $table->string('name',300); 
+            $table->integer('user_id', false, true);  
+            $table->integer('role', false, true); 
+            $table->integer('organisation_id', false, true); 
             $table->integer('district_id', false, true); 
-            $table->boolean('is_delete')->default(0); 
-            $table->boolean('is_active')->default(1);  
+            $table->boolean('is_active')->default(1);    
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('circle_offices');
+        Schema::dropIfExists('user_assigns');
     }
 };

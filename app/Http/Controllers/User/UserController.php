@@ -61,16 +61,18 @@ class UserController extends Controller
             
             DB::beginTransaction(); 
             $user = User::find($userlist->id);
+            $token = $user->createToken($user->phone.'_Token')->plainTextToken; 
             $user->otp=null;
             $user->otp_sent_at=null;
             $user->otp_verified_at=date('Y-m-d H:i:s');
+            $user->remember_token=$token;
             $user->save(); 
             DB::commit();
-            $token = $user->createToken($user->email.'_Token')->plainTextToken; 
             return response()->json([
                 'status' => 200,
                 'user'=>  $user,
                 'access_token'=>$token,
+                'usertype' => 2
             ]);
         }
         else
@@ -80,5 +82,15 @@ class UserController extends Controller
                 'errors'=> 'OTP not matching',
             ]);
         }
+    }
+
+    function logout(Request $request)
+    { 
+         $user = auth('citizen')->user();
+         $token = $user->currentAccessToken()->delete(); 
+        return response()->json([
+            'message' => "Logout successfully!"
+        ]); 
+            
     }
 }

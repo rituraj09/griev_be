@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('police_stations', function (Blueprint $table) {
+        Schema::create('designations', function (Blueprint $table) { 
                 $table->increments('id'); 
-                $table->string('name',300); 
-                $table->integer('district_id', false, true); 
+                $table->string('name',300);  
                 $table->boolean('is_delete')->default(0); 
-                $table->boolean('is_active')->default(1);   
-        });
+                $table->boolean('is_active')->default(1);    
+        }); 
     }
 
     /**
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('police_stations');
+        Schema::dropIfExists('designations');
     }
 };
