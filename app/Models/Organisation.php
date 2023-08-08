@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Organisation extends Model
 {
-    use HasFactory;
+    use HasFactory;   
+    public $timestamps      = false; 
+    protected $table    	= 'organisations';
+
+
+   
 }

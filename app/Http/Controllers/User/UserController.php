@@ -34,7 +34,7 @@ class UserController extends Controller
             { 
                 return response()->json([
                     'status' => 404,
-                    'errors'=>$validator->messages(),
+                    'errors'=>"Mobile Number that you have provided is invalid!",
                 ]);
             } 
             DB::beginTransaction();

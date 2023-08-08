@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Grievance extends Model
+class Transaction extends Model
 {
     use HasFactory;
+    protected $table    	= 'transactions';
     public $timestamps      = false; 
-    public function police()
-    {
-        return $this->belongsTo('App\Models\Organisation','police_id')->withDefault();
-	} 
 }

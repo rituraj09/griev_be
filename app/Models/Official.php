@@ -12,6 +12,7 @@ class Official extends Model
     protected $hidden = [
         'password',
         'remember_token',
+        'id',
     ];
     public $timestamps      = false; 
     protected $table    	= 'officials';
@@ -23,5 +24,8 @@ class Official extends Model
     {
 		return $this->hasone('App\Models\OfficialAssign','user_id','id');
 	}
-    
+    public function desig()
+    {
+		return $this->belongsTo('App\Models\Designation','designation' )->withDefault();
+	}
 }

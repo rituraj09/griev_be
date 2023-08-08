@@ -30,7 +30,7 @@ return new class extends Migration
             
             $table->text('verdict')->nullable();
             $table->string('verdict_file',300)->nullable();
-            $table->integer('verdicted_by')->nullable();
+            $table->string('verdicted_by',300)->nullable();
             $table->string('officer_name',200)->nullable(); 
             $table->timestamp('verdicted_on')->nullable();
         });
